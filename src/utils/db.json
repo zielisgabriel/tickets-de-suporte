@@ -1,1 +1,1 @@
-{"support":[{"equipment":"Computador","description":"Computador não liga.","user_name":"José Gabriel"}]}
+{"support":[{"id":"ff1852a5-a91f-4f7f-b9b5-cc41b1c0f352","equipment":"Computador","description":"Computador não liga","user_name":"Gabriel","status":"open","create_at":"2024-12-22T18:09:13.959Z","update_at":"2024-12-22T18:09:13.959Z"},{"id":"7648e183-0754-4d31-8a94-bbac444256e3","equipment":"Teclado","description":"A tecla de espaço não funciona.","user_name":"José","status":"open","create_at":"2024-12-23T03:38:50.245Z","update_at":"2024-12-23T03:38:50.245Z"}]}
