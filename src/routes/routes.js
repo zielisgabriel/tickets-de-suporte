@@ -1,11 +1,16 @@
+import { create } from "node:domain"
 import { paramsPath } from "../utils/paramsPath.js"
+import { randomUUID } from "node:crypto"
 
 export const routes = [
     {
         method: 'GET',
         url: '/tickets',
         controler: ({ req, res, db }) => {
-            const selectElement = db.selectElements("support")
+            const { status } = req.query
+            const filters = status ? { status } : null
+
+            const selectElement = db.selectElements("support", filters)
             return res.writeHead(200).end(JSON.stringify(selectElement))
         }
     },
@@ -13,8 +18,12 @@ export const routes = [
         method: 'POST',
         url: '/tickets',
         controler: ({ req, res, db }) => {
-            const { equipment, description, user_name } = req.body
-            db.addElements("support", { equipment, description, user_name })
+            const {
+                equipment,
+                description,
+                user_name
+            } = req.body
+            db.addElements("support", { id: randomUUID(), equipment, description, user_name, status: "open", create_at: new Date(), update_at: new Date() })
             return res.writeHead(201).end()
         }
     },
