@@ -33,7 +33,29 @@ export const routes = [
         controler: ({ req, res, db }) => {
             return res.writeHead(200).end(`id: ${req.params.id} DELETADO`)
         }
-    }
+    },
+    {
+        method: 'PUT',
+        url: '/tickets/:id',
+        controler: ({ req, res, db }) => {
+            const { id } = req.params
+            const { equipment, description } = req.body
+            db.updateElement("support", id, { equipment, description, update_at: new Date() })
+
+            return res.writeHead(200).end()
+        }
+    },
+    {
+        method: 'PATCH',
+        url: '/tickets/:id/close',
+        controler: ({ req, res, db }) => {
+            const { id } = req.params
+            const { soluction } = req.body
+
+            db.updateElement("support", id, { status: "closed", soluction })
+            return res.writeHead(200).end()
+        }
+    },
 ].map((route) => ({
     ...route,
     url: paramsPath(route.url)
