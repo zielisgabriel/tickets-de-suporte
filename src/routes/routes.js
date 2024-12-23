@@ -52,7 +52,6 @@ export const routes = [
             const { id } = req.params
 
             db.updateElement("support", id, { status: "closed" })
-
             return res.writeHead(200).end("ok")
         }
     },
