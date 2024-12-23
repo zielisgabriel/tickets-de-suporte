@@ -50,7 +50,6 @@ export const routes = [
         url: '/tickets/:id/close',
         controler: ({ req, res, db }) => {
             const { id } = req.params
-
             db.updateElement("support", id, { status: "closed" })
             return res.writeHead(200).end("ok")
         }
