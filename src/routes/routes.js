@@ -30,7 +30,10 @@ export const routes = [
         method: 'DELETE',
         url: '/tickets/:id',
         controler: ({ req, res, db }) => {
-            return res.writeHead(200).end(`id: ${req.params.id} DELETADO`)
+            const { id } = req.params
+            db.deleteElement("support", id)
+
+            return res.writeHead(200).end()
         }
     },
     {
