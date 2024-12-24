@@ -10,7 +10,7 @@ export const routes = [
             const { status } = req.query
             const filters = status ? { status } : null
 
-            const selectElement = db.selectElements("support")
+            const selectElement = db.selectElements("support", filters)
             return res.writeHead(200).end(JSON.stringify(selectElement))
         }
     },
@@ -41,7 +41,6 @@ export const routes = [
             const { id } = req.params
             const { equipment, description } = req.body
             db.updateElement("support", id, { equipment, description, update_at: new Date() })
-
             return res.writeHead(200).end()
         }
     },

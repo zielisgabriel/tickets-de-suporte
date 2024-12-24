@@ -30,10 +30,23 @@ export class Database{
         let data = this.#database[element] ?? []
         if(filters){
             data = data.filter((row) => {
-                
+                return Object.entries(filters).some(([ key, value ]) => {
+                    return row[key] === value
+                })
             })
         }
-
         return data
+    }
+
+    updateElement(element, id, data){
+        const rowIndex = this.#database[element].findIndex((row) => row.id === id)
+        if(rowIndex > -1){
+            this.#database[element][rowIndex] = {
+                ...this.#database[element][rowIndex],
+                ...data
+            }
+        }
+
+        this.#persist
     }
 }

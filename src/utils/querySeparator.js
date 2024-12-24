@@ -5,12 +5,3 @@ export function querySeparator(query){
         return queryParams
     }, {})
 }
-
-// ?category=computer&price=5000
-
-/*
-query: {
-    category: computer,
-    price: 500
-}
-*/
