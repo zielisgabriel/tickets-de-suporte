@@ -47,6 +47,6 @@ export class Database{
             }
         }
 
-        this.#persist
+        this.#persist()
     }
 }
